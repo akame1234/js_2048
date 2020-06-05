@@ -22,6 +22,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 引入json解析中间件
+var bodyParser = require('body-parser');
+// 添加json解析
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 
